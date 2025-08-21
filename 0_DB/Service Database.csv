@@ -1,0 +1,13 @@
+Partner ID,Partner Type,Partner Name,Group,Type of service,Details,Date Quotation,Price quoted,Date of Service,Price final
+RST-04,RST_Resort,Aroma Beach Resort & Spa ,L2135,Room,Bungalow Garden View,2024-12-23,1950000.0,2025-02-12,1950000.0
+RST-04,RST_Resort,Aroma Beach Resort & Spa ,L2073,Room,Bungalow Garden View,2024-05-11,2000000.0,2025-02-20,2000000.0
+RST-04,RST_Resort,Aroma Beach Resort & Spa ,L2090,Room,Bungalow Garden View,2024-11-11,2000000.0,2024-12-01,2000000.0
+HTL-90,HTL_Hotel,Tirant Hotel,L2191,Room,Executive Balcony + Extra Bed,2025-01-10,3100000.0,2025-05-22,2985000.0
+HTL-90,HTL_Hotel,Tirant Hotel,L2206,Room,Executive Balcony + Extra Bed,2025-02-18,3100000.0,2025-07-13,3100000.0
+HTL-90,HTL_Hotel,Tirant Hotel,L2230,Room,Executive Balcony,2025-03-19,2500000.0,2025-11-24,2500000.0
+HTL-90,HTL_Hotel,Tirant Hotel,L2234,Room,Executive Balcony + Extra Bed,2025-05-09,3100000.0,2025-07-09,3100000.0
+HTL-83,HTL_Hotel,Silverland May,L2230,Room,Khaya,2025-03-19,3000000.0,2025-12-06,2650000.0
+HTL-83,HTL_Hotel,Silverland May,L2234,Room,Flamboyant + Extra Bed,2025-06-25,3200000.0,2025-07-27,3050000.0
+CRS-08,CRS_Cruise,La Casta Cruise ,L2234,Room,Family Triple,2025-05-09,9450000.0,2025-07-11,9072000.0
+CRS-08,CRS_Cruise,La Casta Cruise ,L2115,Room,Junior Suite,2024-12-06,6200000.0,2025-02-06,16500000.0
+CRS-08,CRS_Cruise,La Casta Cruise ,L2270,Room,Senior Suite,2024-03-07,12200000.0,2025-07-28,1300000.0
