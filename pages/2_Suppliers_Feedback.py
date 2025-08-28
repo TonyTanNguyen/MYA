@@ -126,36 +126,42 @@ try:
                 if not supplier_details.empty:
                     # Display supplier information
                     with st.expander("🏢 Supplier Information", expanded=False):
-                        col1, col2 = st.columns(2)
-                        
-                        with col1:
+                        # Row 1: Standard Type + Country
+                        r1c1, r1c2 = st.columns(2)
+                        with r1c1:
                             st.markdown("**Standard Type:**")
                             standard_type = supplier_details.iloc[0].get("Standard_Type", "Not specified")
                             if standard_type is None:
                                 standard_type = "Not specified"
                             st.info(standard_type)
-                            
+                        with r1c2:
                             st.markdown("**Country:**")
                             country = supplier_details.iloc[0].get("Country", "Not specified")
                             if country is None:
                                 country = "Not specified"
                             st.success(country)
-                        
-                        with col2:
+
+                        # Row 2: Location + Partner Type
+                        r2c1, r2c2 = st.columns(2)
+                        with r2c1:
                             st.markdown("**Location:**")
                             location = supplier_details.iloc[0].get("Location", "Not specified")
                             if location is None:
                                 location = "Not specified"
                             st.success(location)
-                            
-                            st.markdown("**Description:**")
-                            description = supplier_details.iloc[0].get("Description", "No description available")
-                            # Handle None values and truncate description if too long
-                            if description is None:
-                                description = "No description available"
-                            elif len(str(description)) > 100:
-                                description = str(description)[:100] + "..."
-                            st.info(description)
+                        with r2c2:
+                            st.markdown("**Partner Type:**")
+                            partner_type = supplier_details.iloc[0].get("Partner Type", "Not specified")
+                            if partner_type is None:
+                                partner_type = "Not specified"
+                            st.info(partner_type)
+
+                        # Row 3: Full-width Description
+                        st.markdown("**Description:**")
+                        description_full = supplier_details.iloc[0].get("Description", "No description available")
+                        if description_full is None:
+                            description_full = "No description available"
+                        st.info(str(description_full))
                     
                     main_conn.close()
                     
