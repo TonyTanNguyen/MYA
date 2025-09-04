@@ -246,7 +246,7 @@ def require_login(render_sidebar_user: bool = True) -> Optional[Dict[str, str]]:
         """, unsafe_allow_html=True)
         
         # Add logo to admin setup page
-        st.logo("static/Images/MYALogo.png")
+        show_logo()
         
         st.title("🔐 Set up Admin Account")
         st.info("No users found. Create the first account to continue.")
@@ -283,7 +283,7 @@ def require_login(render_sidebar_user: bool = True) -> Optional[Dict[str, str]]:
     """, unsafe_allow_html=True)
     
     # Add logo to login page
-    st.logo("static/Images/MYALogo.png")
+    show_logo()
     
     st.title("🔒 Login")
     with st.form("login_form"):
@@ -424,4 +424,37 @@ def delete_user(username: str) -> None:
         conn.close()
 
 def show_logo():
-    st.logo("static/Images/MYAlogo_white.png", icon_image = "static/Images/MYAlogo.png", size = "large")
+    """Render app logo with a proper icon image.
+
+    Uses PIL to ensure valid image objects are passed to st.logo to avoid
+    StreamlitAPIException about invalid icon_image types.
+    """
+    try:
+        from PIL import Image  # type: ignore
+    except Exception:
+        # Fallback: pass file paths directly
+        st.logo(
+            "static/Images/MYAlogo_white.png",
+            icon_image="static/Images/MYALogo.png",
+            size="large",
+        )
+        return
+
+    main_path = os.path.join("static", "Images", "MYAlogo_white.png")
+    icon_path = os.path.join("static", "Images", "MYALogo.png")
+
+    try:
+        main_img = Image.open(main_path)
+    except Exception:
+        main_img = None
+    try:
+        icon_img = Image.open(icon_path)
+    except Exception:
+        icon_img = None
+
+    # Prefer PIL images when available; otherwise, pass the path strings
+    st.logo(
+        main_img if main_img is not None else main_path,
+        icon_image=icon_img if icon_img is not None else icon_path,
+        size="large",
+    )
