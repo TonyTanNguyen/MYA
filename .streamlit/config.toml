@@ -1,0 +1,24 @@
+[[theme.fontFaces]]
+family="CormorantGaramond"
+url="static/Fonts/CormorantGaramond-Medium.ttf"
+style="normal"
+weight=500
+
+[[theme.fontFaces]]
+family="Avenir"
+url="static/Fonts/Avenir.ttc"
+style="normal"
+weight=400
+
+[theme]
+base="light"
+backgroundColor="white"
+secondaryBackgroundColor="#f8f9fa"
+textColor="#07173a"
+primaryColor="#a80e0e"
+font="Avenir, sans-serif"
+
+[theme.sidebar]
+textColor="white"
+backgroundColor="#07173a"
+secondaryBackgroundColor="#07173a"

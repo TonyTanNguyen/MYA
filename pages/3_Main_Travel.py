@@ -1,13 +1,23 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
-from utils import DB_FILE, quote_ident, init_session_state, require_login
+from utils import DB_FILE, quote_ident, init_session_state, require_login, show_logo
+
+# Add custom CSS for title fonts
+st.markdown("""
+<style>
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'CormorantGaramond', serif !important;
+    font-weight: 500 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 init_session_state()
 require_login()
 
 st.title("✈️ Main Travel Database")
-
+show_logo()
 table_name = "Main Travel Database"
 conn = sqlite3.connect(DB_FILE)
 

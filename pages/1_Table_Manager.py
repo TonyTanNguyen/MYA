@@ -1,13 +1,23 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
-from utils import DB_FILE, quote_ident, get_table_names, get_table_columns, insert_row, init_session_state, require_login, is_admin
+from utils import DB_FILE, quote_ident, get_table_names, get_table_columns, insert_row, init_session_state, require_login, is_admin, show_logo
+
+# Add custom CSS for title fonts
+st.markdown("""
+<style>
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'CormorantGaramond', serif !important;
+    font-weight: 500 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 init_session_state()
 require_login()
 
 st.title("📊 Table Viewer & Data Entry")
-
+show_logo()
 # --- Connect to DB ---
 conn = sqlite3.connect(DB_FILE)
 

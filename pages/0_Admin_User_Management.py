@@ -1,10 +1,20 @@
 import streamlit as st
-from utils import require_login, is_admin, list_users, update_user_role, update_full_name, delete_user, change_password, create_user
+from utils import require_login, is_admin, list_users, update_user_role, update_full_name, delete_user, change_password, create_user, show_logo
+
+# Add custom CSS for title fonts
+st.markdown("""
+<style>
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'CormorantGaramond', serif !important;
+    font-weight: 500 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 require_login()
 
 st.title("🛡️ Admin • User Management")
-
+show_logo()
 if not is_admin():
     st.error("You do not have permission to view this page.")
     st.stop()

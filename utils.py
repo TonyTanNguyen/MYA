@@ -160,6 +160,10 @@ def require_login(render_sidebar_user: bool = True) -> Optional[Dict[str, str]]:
     if current_user:
         if render_sidebar_user:
             with st.sidebar:
+                # Add logo to sidebar
+                show_logo()
+                
+                
                 st.caption("Signed in")
                 st.write(f"👤 {current_user.get('full_name') or current_user['username']}")
                 st.write(f"🔑 Role: {current_user.get('role', 'viewer')}")
@@ -231,6 +235,19 @@ def require_login(render_sidebar_user: bool = True) -> Optional[Dict[str, str]]:
 
     # First-run: create initial user if table empty
     if get_user_count() == 0:
+        # Add custom CSS for title fonts
+        st.markdown("""
+        <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'CormorantGaramond', serif !important;
+            font-weight: 500 !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Add logo to admin setup page
+        st.logo("static/Images/MYALogo.png")
+        
         st.title("🔐 Set up Admin Account")
         st.info("No users found. Create the first account to continue.")
         with st.form("create_first_user"):
@@ -255,6 +272,19 @@ def require_login(render_sidebar_user: bool = True) -> Optional[Dict[str, str]]:
         st.stop()
 
     # Normal login flow
+    # Add custom CSS for title fonts
+    st.markdown("""
+    <style>
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'CormorantGaramond', serif !important;
+        font-weight: 500 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Add logo to login page
+    st.logo("static/Images/MYALogo.png")
+    
     st.title("🔒 Login")
     with st.form("login_form"):
         username = st.text_input("Username")
@@ -392,3 +422,6 @@ def delete_user(username: str) -> None:
         conn.commit()
     finally:
         conn.close()
+
+def show_logo():
+    st.logo("static/Images/MYAlogo_white.png", icon_image = "static/Images/MYAlogo.png", size = "large")
