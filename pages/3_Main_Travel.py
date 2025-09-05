@@ -67,8 +67,8 @@ try:
         
         # Search box
         search_keyword = st.text_input(
-            "Enter keyword to search in Partner Name, Description, or Location:",
-            placeholder="e.g., Hotel ABC, Beach, Luxury...",
+            "Enter keyword to search in Partner Name, Description, Location, or Country:",
+            placeholder="e.g., Hotel ABC, Beach, Luxury, Thailand...",
             key="partner_search"
         )
         
@@ -91,7 +91,7 @@ try:
             # Apply search keyword filter
             if search_keyword:
                 # Search across multiple columns
-                search_columns = ["Partner Name", "Description", "Location"]
+                search_columns = ["Partner Name", "Description", "Location", "Country"]
                 available_columns = [col for col in search_columns if col in df_filtered.columns]
                 
                 if available_columns:
