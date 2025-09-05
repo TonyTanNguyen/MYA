@@ -78,15 +78,15 @@ try:
             
             # Apply country filter
             if selected_country != "All Countries":
-                df_filtered = df_filtered[df_filtered["Country"] == selected_country]
+                df_filtered = df_filtered[df_filtered["Country"] == selected_country].reset_index(drop=True)
             
             # Apply location filter
             if selected_location != "All Locations":
-                df_filtered = df_filtered[df_filtered["Location"] == selected_location]
+                df_filtered = df_filtered[df_filtered["Location"] == selected_location].reset_index(drop=True)
             
             # Apply status filter
             if selected_status != "All Statuses":
-                df_filtered = df_filtered[df_filtered["Status"] == selected_status]
+                df_filtered = df_filtered[df_filtered["Status"] == selected_status].reset_index(drop=True)
             
             # Apply search keyword filter
             if search_keyword:
@@ -96,7 +96,7 @@ try:
                 
                 if available_columns:
                     # Create search mask across all available columns
-                    search_mask = pd.Series([False] * len(df_filtered))
+                    search_mask = pd.Series([False] * len(df_filtered), index=df_filtered.index)
                     for col in available_columns:
                         col_mask = df_filtered[col].astype(str).str.contains(
                             search_keyword, 
@@ -105,7 +105,7 @@ try:
                         )
                         search_mask |= col_mask
                     
-                    df_filtered = df_filtered[search_mask]
+                    df_filtered = df_filtered[search_mask].reset_index(drop=True)
                 else:
                     # Fallback to Partner Name only if other columns don't exist
                     mask = df_filtered["Partner Name"].astype(str).str.contains(
@@ -113,7 +113,7 @@ try:
                         case=False, 
                         na=False
                     )
-                    df_filtered = df_filtered[mask]
+                    df_filtered = df_filtered[mask].reset_index(drop=True)
             
             if not df_filtered.empty:
                 # Show search results summary in one line
